@@ -3,7 +3,7 @@ import {TextInput, StyleSheet, Button, Text, View,Image, Pressable} from 'react-
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen(){
-    var name;
+    const [name, onChangeName] = React.useState("");
     return(
         <SafeAreaView style={styles.container}>
             <Pressable style={styles.button} onPress={()=> console.log('here will open the navigationDrawer')}>
@@ -11,8 +11,10 @@ export default function HomeScreen(){
             </Pressable>
             <Text style={styles.text}>Pokedex</Text>
             <Text style={styles.question}>What's your name?</Text>
-            <TextInput style={styles.user} placeholder='Name' ></TextInput>
-            <Button title = 'Send' onPress={()=> console.log("Sent successfully!")}></Button>
+            <TextInput style={styles.user} placeholder='Name'
+                onChangeText={onChangeName}
+                value={name}></TextInput>
+            <Button title = 'Send' onPress={()=> console.log("Sent successfully!",name)}></Button>
         </SafeAreaView>
         ) 
 }
